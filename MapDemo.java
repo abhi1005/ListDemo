@@ -5,6 +5,13 @@ import java.util.Map;
 public class MapDemo {
     public static void main(String[] args) {
         String input = "This is Spot. See Spot run. Run, Spot, Run.";
+        Map<String, Integer> wordsCountMap = getStringCountMap(input);
+        wordsCountMap.forEach((str,num) -> {
+            System.err.println(str+":"+num);
+        });
+    }
+
+    public static Map<String, Integer> getStringCountMap(String input){
         Map<String, Integer> wordsCountMap = new HashMap<>();
         String inputArray[] = Arrays.stream(input.split("\\s+"))
                 .map(String::trim)
@@ -20,8 +27,7 @@ public class MapDemo {
                 wordsCountMap.put(lowerCaseStr,1);
             }
         }
-        wordsCountMap.forEach((str,num) -> {
-            System.err.println(str+":"+num);
-        });
+        return wordsCountMap;
     }
+
 }
